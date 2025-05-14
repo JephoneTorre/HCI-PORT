@@ -1,0 +1,525 @@
+/* Global Styles */
+.custom-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    font-family: 'nura', sans-serif;
+    font-size: 1rem;
+    color: #032801;
+    letter-spacing: 3px;
+    z-index: 6;
+}
+
+.custom-nav a {
+    text-decoration: none;
+    margin: 0 1.25rem;
+    color: inherit;
+    position: relative; /* Needed for positioning the pseudo-element */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.custom-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Place at the bottom of the link */
+    left: 0;
+    width: 0; /* Start with no width */
+    height: 2px; /* Thickness of the bottom border */
+    background-color: #688511; /* Border color */
+    transition: width 0.3s ease; /* Animate the width */
+}
+
+.custom-nav a:hover {
+    color: #BECE4A; /* Change text color on hover */
+}
+
+.custom-nav a:hover::after {
+    width: 100%; /* Grow the border to full width */
+}
+
+.custom-nav a.active {
+    color: #688511; /* Color for the active link */
+}
+
+body {
+    background: #F6FBDB;
+    margin: 0;
+    height: auto; /* Allow content height to dictate the page height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Keep horizontal scrolling hidden, if desired */
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.centered-content {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center */
+    justify-content: center; /* Vertically center */
+    height: 100vh; /* Full viewport height */
+    padding-bottom: 20rem;
+}
+.overlay-image {
+    position: absolute;
+    top: 35%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Consistent position */
+    width: 40rem; /* Adjust size as needed */
+    height: auto;
+    z-index: 4; /* Higher than .land and .centered-text */
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 3s ease forwards 3s, swayAnimation 7s ease-in-out infinite 4s; /* Fade-in with delay and swaying after */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes swayAnimation {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -50%) rotate(2deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    75% {
+        transform: translate(-50%, -50%) rotate(-2deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+
+
+.leaf {
+    position: absolute;
+    top: 0%; /* Center vertically */
+    left: 0%; /* Center horizontally */
+    width: 5rem; /* Adjust to fit the viewport width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Stack order */
+    opacity: 0; /* Start hidden */
+    transform: translate(-50%, -50%); /* Center the element */
+    animation: fadeIn 3s ease forwards 3s, swayAnimation 4s ease-in-out infinite 4s; 
+}
+.leafsingle1 {
+    position: absolute;
+    top: 20%; /* Center vertically */
+    left: 0%; /* Center horizontally */
+    width: 5rem; /* Adjust to fit the viewport width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Stack order */
+    opacity: 0; /* Start hidden */
+    transform: translate(-50%, -50%); /* Center the element */
+    animation: fadeIn 3s ease forwards 3s, swayAnimation 4s ease-in-out infinite 4s; 
+    
+}
+
+.leafsway {
+    position: absolute;
+    top: 60%; /* Center vertically */
+    left: 90%; /* Center horizontally */
+    width: 30rem; /* Adjust to fit the viewport width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 7; /* Stack order */
+    opacity: 0; /* Start hidden */
+    transform: translate(-50%, -50%); /* Center the element */
+    animation: fadeAndMoveLand 4s ease forwards 4s,swayAnimation 4s ease-in-out infinite 4s;; /* Animation with delay */
+}
+
+@keyframes whirlwind {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-60%, -60%) scale(1.1) rotate(90deg);
+    }
+    50% {
+        transform: translate(-40%, -70%) scale(1.2) rotate(180deg);
+    }
+    75% {
+        transform: translate(-65%, -40%) scale(1.1) rotate(270deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-30%, -30%) scale(1) rotate(360deg);
+    }
+}
+
+.leaf2 {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    width: 70rem; /* Adjust size as needed */
+    height: auto;
+    z-index: 4; /* Higher than .land and .centered-text */
+    opacity: 0; /* Start hidden */
+    transform: translate(-50%, -50%); /* Center the element */
+    animation: whirlwind 3s ease-in forwards; /* Apply whirlwind animation */
+    
+}
+
+.land {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70rem; /* Adjust as needed */
+    height: auto;
+    z-index: 3; /* Below overlay but above text */
+    opacity: 0; /* Start hidden */
+    margin-top: 0rem;
+    animation: fadeAndMoveText 2s ease forwards 2s; /* Animation with delay */
+}
+
+
+.centered-text {
+    font-size: 24rem;
+    font-family: 'Attena';
+    background: linear-gradient(90deg, #032801 1%, #BECE4A 64%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 10px;
+    z-index: 2; /* Lowest, below both images */
+    opacity: 0; /* Start hidden */
+    margin-left: 0rem;
+    opacity: 0; /* Start hidden */
+    animation: fadeAndMoveOverlay 3s ease forwards;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+@keyframes fadeAndMoveOverlay {
+    0% {
+        opacity: 0;
+        transform: translate(0, -60%); /* Adjusted to avoid horizontal overflow */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes fadeAndMoveLand {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -55%); /* Initial off-center position */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* Final centered position */
+    }
+}
+
+@keyframes fadeAndMoveText {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -45%); /* Initial off-center position */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* Final centered position */
+    }
+}
+/* Section for the below content */
+
+
+.background-section {
+    background-color: #1E2E12;
+    height: 140rem;
+    width: 100%;
+    padding-top: 50px; /* Replace with your desired value */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.background-section1 {
+    background-color: #1E2E12;
+    height: 20rem;
+    width: 100%;
+    padding-top: 50px; /* Replace with your desired value */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-container {
+    width: 90rem;
+    height: 850px;
+    background-color: #F6FBDB;
+    border-radius: 70px;
+    margin-bottom: 250rem;
+    position: relative;
+}
+.compscie {
+    max-width: 150rem;    /* Ensures the image doesn’t exceed the container's width */
+    max-height: 100%;     /* Ensures the image doesn’t exceed the container's height */
+    object-fit: fill;     /* Makes sure the aspect ratio is maintained */
+    margin-left: 11rem;   /* Adjusts the position */
+    z-index: 1;           /* Places the image below the text */
+    position: relative;   /* Sets positioning for the image */
+}
+
+.one {
+    font-size: 24px;               /* Set font size to 24px */
+    color: #032801;                /* Set text color to #032801 */
+    font-family: 'Lufga', sans-serif; /* Choose a font-family (can be adjusted) */
+    line-height: 1.5;              /* Adjust line height for better readability */
+    text-align: left;              /* Align the text to the left */
+    position: absolute;            /* Absolute positioning for the text */
+    top: 30%;                      /* Position vertically relative to the container */
+    left: 20%;                     /* Position horizontally relative to the container */
+    transform: translate(-50%, -50%); /* Adjust position to truly center the container */
+    z-index: 4;                    /* Ensures the text is on top of the image */
+    width: 30rem;                  /* Set the width of the text box */
+}
+
+.circles-container {
+    position: absolute;            /* Makes the circles overlay the compscie image */
+    left: 12%;                     /* Position horizontally relative to the container */
+    top: 49%;                      /* Bring the circles closer to the text */
+    transform: translate(-50%, -50%); /* Centers the container */
+    display: flex;                 /* Align circles horizontally */
+    gap: 15px;                     /* Space between the circles */
+    z-index: 6;                    /* Ensures the circles are layered above the image */
+}
+
+.circle {
+    width: 71px;                   /* Circle width */
+    height: 71px;                  /* Circle height */
+    border-radius: 50%;            /* Makes the container circular */
+    overflow: hidden;              /* Ensures images stay within the circle */
+    display: flex;                 /* Centers the image within the circle */
+    align-items: center;           
+    background-color: #032801;        /* Optional: fallback background color */
+    border: 2px solid #032801;     /* Optional: adds a border around the circle */
+}
+
+.circle-image {
+    margin-top: 2px;
+    width: 80%;                   /* Ensures the image fills most of the circle */
+    height: 80%;                  /* Ensures the image fills most of the circle */
+    object-fit: cover;            /* Ensures the image respects aspect ratio */
+    margin-left: 7px;
+}
+
+.two {
+    font-size: 24px;               /* Set font size to 24px */
+    color: #032801;                /* Set text color to #032801 */
+    font-family: 'Lufga', sans-serif; /* Choose a font-family (can be adjusted) */
+    line-height: 1.5;              /* Adjust line height for better readability */
+    text-align: right;              /* Align the text to the left */
+    position: absolute;            /* Absolute positioning for the text */
+    top: 80%;                      /* Position vertically relative to the container */
+    right: -7rem;             /* Position horizontally relative to the container */
+    transform: translate(-50%, -50%); /* Adjust position to truly center the container */
+    z-index: 4;                    /* Ensures the text is on top of the image */
+    width: 30rem;                  /* Set the width of the text box */
+}
+.additional-content {
+    padding: 20px; /* Spacing inside the box */
+    margin-top: 20px; /* Space above the section */
+    text-align: center; /* Center-align text */
+    position: relative; /* Positioning for animations */
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Hidden initially */
+    transition: transform 1s ease, opacity 1s ease; /* Smooth animation */
+}
+
+.additional-content.active {
+    transform: translateX(0); /* Slide into place */
+    opacity: 1; /* Fully visible */
+}
+
+.additional-content h2 {
+    font-size: 12rem; /* Larger font for the heading */
+    margin-bottom: 10px; /* Space below the heading */
+    margin-right: 35rem; /* Adjust alignment */
+    color: #F6FBDB;
+}
+
+.additional-content p {
+    font-size: 24px; /* Normal font size for paragraph */
+    line-height: 1.5; /* Spacing between lines */
+    margin-top: 5rem; /* Space above the paragraph */
+    margin-left: 40rem; /* Align to the left */
+    color: #F6FBDB; /* Text color */
+    text-align: left; /* Explicit left alignment */
+    letter-spacing: 2px;
+}
+
+
+.rectangle {
+    display: flex; /* Use flexbox to center text */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    width: 211px; /* Width of the rectangle */
+    height: 61px; /* Height of the rectangle */
+    border: 2px solid #F6FBDB; /* Stroke color */
+    border-radius: 50px; /* Corner radius */
+    background: none; /* No fill */
+    position: absolute; /* Position it relative to the parent */
+    top: 18rem; /* Adjust position vertically */
+    right: 10%; /* Position at the right side of the container */
+    transform: translateY(-50%); /* Center align vertically */
+    font-size: 18px; /* Font size of the text */
+    color: #F6FBDB; /* Text color */
+    text-decoration: none; /* Remove underline from the link */
+    font-family: 'lufga'; /* Font style */
+    transition: background 0.3s ease, color 0.3s ease; /* Add hover effect */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.rectangle:hover {
+    background: #F6FBDB; /* Background on hover */
+    color: #000; /* Text color on hover */
+}
+.compimage{
+    margin-top: 7rem;
+}
+.gradient-section {
+    height: 23rem; /* Set the specified height */
+    width: 200rem; /* Full width of the viewport */
+    background: linear-gradient(to right, #F6FBDB 67%, #BECE4A 100%); /* Gradient from left to right */
+    margin: 0; /* No extra margin around the section */
+    padding: 0; /* No extra padding */
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column; /* Stack h2 and p vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    text-align: center; /* Ensure text inside h2 and p is centered */
+}
+
+.gradient-section h2 {
+    font-size: 10rem; /* Keep original font size */
+    margin-bottom: 0rem; /* Adjust space below the heading */
+    color: #032801; /* Text color */
+    font-family: 'attena'; /* Ensure proper fallback font */
+    margin-right: 40rem;
+    letter-spacing: 3px;
+    
+    
+}
+
+.gradient-section p {
+    font-size: 2rem; /* Adjust paragraph font size as needed */
+    color: #032801; /* Text color */
+    font-family: 'attena', sans-serif; /* Font consistency */
+    margin-top: 0; /* No extra margin above the paragraph */
+    margin-bottom: 10rem;
+    margin-right: 55rem;
+    font-family: 'Lufga', sans-serif;
+    letter-spacing: 3px;
+    width: 25rem;
+}
+.background-section3 {
+    background-color: #1E2E12;
+    height: 140rem;
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;  /* Ensures positioning for absolute elements inside */
+     object-fit: contain;
+}
+
+/* Container for the carousel */
+.carousel-container {
+    position: absolute;           /* Absolute positioning relative to .background-section3 */
+    top: 20%;                     /* Center vertically */
+    left: 50%;                    /* Center horizontally */
+    width: 60vw;                  /* Use viewport width to keep the size consistent with viewport */
+    height: 80vh;                 /* Set height relative to viewport height */
+    transform: translate(-50%, -50%); /* Offset to truly center the container */
+    overflow: hidden;             /* Hide the overflow */
+    margin-bottom: 0;             /* No additional bottom margin */
+    z-index: 10;                  /* Ensure the carousel stays above other elements */
+    pointer-events: auto;         /* Disable interaction with the carousel while zooming */
+
+}
+
+.carousel {
+    pointer-events: auto;         /* Enable interaction with carousel items */
+}
+
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-item {
+    width: 100%;         /* Each item takes full width of the carousel container */
+    flex-shrink: 0;      /* Prevent shrinking of items */
+    text-align: center;
+    position: relative;
+    display: none;       /* Hide all items by default */
+}
+
+.carousel-item.active {
+    display: block;      /* Show only the active item */
+}
+
+
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.carousel-heading {
+    font-size: 2rem;               /* Set a numeric value for font size */
+    color: #F6FBDB;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    background-color:#1E2E12;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Lufga', sans-serif;   /* Make sure font is properly applied */
+}
